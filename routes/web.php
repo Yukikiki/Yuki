@@ -14,4 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('api/user/reg', 'UserController@create');
+Route::get('user/reg', 'UserController@create');
+Route::get('user/login', 'UserController@login') -> name('login');
+Route::get('user/logout', 'UserController@logout');
+Route::get('blog/issue', 'BlogController@create');
+Route::get('blog/change', 'BlogController@change');
+Route::get('blog/detail', 'BlogController@detail');
+Route::get('blog/delete', 'BlogController@remove');

@@ -24,11 +24,13 @@ function rq($key = null, $default = null)
 
 /**
  * 检查是否登录
- * @return bool
+ * @return mixed
  */
 function needLogin()
 {
-    return session('user_info.id') ?: false;
+    if (!session('user_info.uid')){
+        return returnData(RTN_STATUS_NOT_LOGIN, '用户未登录！');
+    }
 }
 
 /**
@@ -49,4 +51,13 @@ function returnData($status, $msg, $data = null, $type = 1)
         $ret = json_encode($ret);
     }
     return $ret;
+}
+
+/**
+ * 获取当前时间
+ * @return false|string
+ */
+function nowDate()
+{
+    return date('Y-m-d H:i:s', time());
 }
