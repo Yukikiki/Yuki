@@ -21,3 +21,5 @@ Route::get('blog/issue', 'BlogController@create');
 Route::get('blog/change', 'BlogController@change');
 Route::get('blog/detail', 'BlogController@detail');
 Route::get('blog/delete', 'BlogController@remove');
+Route::get('comm/add', 'CommentController@create');
+Route::get('comm/like', 'CommentController@like');

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\models\Blog;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -14,6 +13,10 @@ class BlogController extends Controller
         $this -> _blog_mod = new Blog;
     }
 
+    /**
+     * 博客列表
+     * @return array|string
+     */
     public function detail()
     {
         $id = rq('id');
@@ -27,8 +30,7 @@ class BlogController extends Controller
         /* —— 分页处理 ——*/
         // skip 是第几条后的数据 所以当前页的数据输减一
         $limit = rq('limit') ?: 15;
-        //$skip = (rq('page') ? rq('page') - 1 : 0) * $limit;
-        $skip = rq('page') ? rq('page') : 1;
+        $skip = (rq('page') ? rq('page') - 1 : 0) * $limit;
         /* —— 结束 ——*/
         $res = $this -> _blog_mod -> getList([], $limit, $skip);
         $res = json_decode($res, true);
