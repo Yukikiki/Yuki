@@ -79,7 +79,7 @@ class CommentController extends Controller
         if(!$ret){
             return returnData(RTN_STATUS_ERROR, '点赞失败！');
         }
-        return returnData(RTN_STATUS_SUCCESS, '点赞成功！', $ret);
+        return returnData(RTN_STATUS_SUCCESS, '点赞成功！', $cid);
     }
 
 }

@@ -39,7 +39,7 @@ class Comment extends Model
      */
     public function setLikeById($id)
     {
-        if(isset($id)){
+        if(!isset($id)){
             return false;
         }
         $ret = $this -> where('id', $id) -> increment('like', 1);
